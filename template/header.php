@@ -1,18 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
 <body >
     <header class="fixed-top">
         <div class="container">
@@ -54,14 +39,14 @@
                             
                             <div class="btn-group">
                                 <a type="button" class="btn header__camera" style="color: #adb5bd" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="assets/images/camera.png" alt="" class="header__camera--img">
+                                    <img src="images/camera.png" alt="" class="header__camera--img">
                                     <i class="header__camera--icon bi bi-caret-down-fill"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li>
                                         <div class="camera--item">
                                             <a href="update_info.php" class="camera__avatar">
-                                                <img src="assets/images/camera.png" alt="" class="camera--img">
+                                                <img src="images/camera.png" alt="" class="camera--img">
                                                 <div class="camera--text">
                                                     <?php
                                                         if (isset($_SESSION['isLoginOK']))
