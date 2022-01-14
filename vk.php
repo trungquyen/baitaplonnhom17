@@ -122,13 +122,13 @@
                             <div class="form-group">
                                 <div class="col-md-8 mb-2 w-100">
                                     <input type="text" name="textFirstName" class="form-control" id="inputfirstname"
-                                        placeholder="Your first name" />
+                                        placeholder="Your first name" required autofocus/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-8 mb-3 w-100">
                                     <input type="text" name="textLastName" class="form-control" id="inputlastname"
-                                        placeholder="Your last name" />
+                                        placeholder="Your last name" required autofocus/>
                                 </div>
                             </div>
                             <!-- Ngày sinh -->
