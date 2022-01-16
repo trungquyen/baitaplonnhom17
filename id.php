@@ -13,7 +13,7 @@
             die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
         }
         // Bước 02: Thực hiện truy vấn
-        $sql = "SELECT * FROM user WHERE email = '{$_SESSION['isLoginOK']}'";
+        $sql = "SELECT * FROM users WHERE email = '{$_SESSION['isLoginOK']}'";
 
         $result = mysqli_query($conn,$sql); //Nó chỉ ra về 1 bản ghi, mà mình chỉ cần lấy 1 bản ghi thôi
 
@@ -33,7 +33,7 @@
         die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
     }
     // Bước 02: Thực hiện truy vấn
-    $sql2 = "SELECT * FROM info WHERE mang = '{$row['mang']}'";
+    $sql2 = "SELECT * FROM info WHERE id = '{$row['id']}'";
 
     $result2 = mysqli_query($conn,$sql2); //Nó chỉ ra về 1 bản ghi, mà mình chỉ cần lấy 1 bản ghi thôi
 
@@ -45,7 +45,29 @@
 
     // Bước 04: Đóng kết nối
     mysqli_close($conn);
+?>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php
+    if (isset($_SESSION['isLoginOK']))
+    {
+        echo '<title>'.$row2['first_name'].' '.$row2['last_name'].'</title>';
+    }
+    ?>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/new.css">
+    <link rel="stylesheet" href="assets/css/id.css">
+</head>
+
+<?php
     require "template/header.php";
 ?>
 
@@ -94,7 +116,7 @@
                             <?php
                             if (isset($_SESSION['isLoginOK']))
                             {
-                                echo '<h3 class="page__name">'.$row['name'].'</h3>';
+                                echo '<h3 class="page__name">'.$row2['first_name'].' '.$row2['last_name'].'</h3>';
                             }
                             ?>
                             <div class="page__status">
@@ -187,7 +209,7 @@
                                 </a>
                                 <div class="post__header__info">
                                     <?php
-                                        echo '<a href="" class="post__header__name">'.$row['name'].'</a>';
+                                        echo '<a href="" class="post__header__name">'.$row2['first_name'].' '.$row2['last_name'].'</a>';
                                     ?>
                                     <div class="post__header__timer">
                                         <a href="">
