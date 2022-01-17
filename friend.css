@@ -1,0 +1,136 @@
+.friend{
+    background-color: #ffffff;
+    border-radius:2%;
+    height:100%;
+}
+.all{
+    text-decoration: none;
+    color: black;
+}
+.onl{
+    text-decoration: none;
+    color: black;
+}
+.friends_photo_img{
+    border-radius: 50%;
+}
+.mess{
+    text-decoration: none;
+    color: #294b74;
+}
+.call{
+    text-decoration: none;
+    color: #416286;
+}
+.parameter{
+    display:flex ;
+}
+.Datvan{
+    display:flex ;
+}
+.para{
+    text-decoration: none;
+    color:#416286;
+}
+.onefr{
+    display: flex;
+}
+.find{
+    position: absolute;
+    right: 36%;
+
+}
+.know{
+    background-color: #ffffff;
+    border-radius:2%;
+   
+}
+.myfriend{
+    display: flex;
+    text-decoration: none;
+    color:#416286;
+}
+.newlist{
+    background-color:  #cccccc;
+    text-decoration: none;
+    color:#416286;
+}
+.School{
+    text-decoration: none;
+    color: rgb(31, 29, 29);
+}
+.add{
+    text-decoration: none;
+    color:#416286;
+}
+.addfr{
+    display: flex;
+}
+.form-select{
+    width: 150px;
+}
+.age{
+    display: flex;
+    color: #416286; 
+}
+.Name{
+    text-decoration: none;
+    color: #416286; 
+}
+.dropdown-menu{
+    width: 150px;
+}
+.show_all{
+    text-decoration: none;
+    color: #416286;
+    padding-left: 90px;
+    
+}
+.radio{
+    color: black;
+
+}
+.create {
+    text-decoration:none ;
+    color: #2a87ba;
+}
+.calender{
+    padding-left:70px;
+    color: #416286;
+}
+.more{
+    padding-left:80px; 
+   color: #536a80;
+   padding: top 70px;;
+}
+.dropdown_more{
+    color: #416286; 
+    padding-left: 150px;
+}
+.people_friend{
+    background-color: #ffffff;
+}
+.call_friend{
+    display: flex;
+}
+.dropdown_parament{
+    width: 300px;
+}
+.container{
+    color: #416286; 
+}
+.icon_more{
+    color: #416286; 
+}
+
+.myfriend_my{
+    text-decoration:none ;
+    color:black;
+}
+.name_mess{
+    text-decoration:none ;
+    color:black;  
+}
+.People_your_may_friends{
+    color:black; 
+}
