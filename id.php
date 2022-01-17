@@ -1,10 +1,10 @@
 <?php
     // trước khi cho người dùng vào bên trong
     // phải kiểm tra thẻ làm việc
-    session_start();
-    if (!isset($_SESSION['isLoginOK'])){
-        header("location:vk.php");
-    }
+     session_start();
+     if (!isset($_SESSION['isLoginOK'])){
+         header("location:vk.php");
+     }
 
     if (isset($_SESSION['isLoginOK'])){
         // Bước 01: Kết nối Database Server
@@ -13,7 +13,7 @@
             die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
         }
         // Bước 02: Thực hiện truy vấn
-        $sql = "SELECT * FROM user WHERE email = '{$_SESSION['isLoginOK']}'";
+        $sql = "SELECT * FROM users WHERE email = '{$_SESSION['isLoginOK']}'";
 
         $result = mysqli_query($conn,$sql); //Nó chỉ ra về 1 bản ghi, mà mình chỉ cần lấy 1 bản ghi thôi
 
@@ -33,7 +33,7 @@
         die("Kết nối thất bại. Vui lòng kiểm tra lại các thông tin máy chủ");
     }
     // Bước 02: Thực hiện truy vấn
-    $sql2 = "SELECT * FROM info WHERE mang = '{$row['mang']}'";
+    $sql2 = "SELECT * FROM info WHERE id = '{$row['id']}'";
 
     $result2 = mysqli_query($conn,$sql2); //Nó chỉ ra về 1 bản ghi, mà mình chỉ cần lấy 1 bản ghi thôi
 
@@ -45,7 +45,29 @@
 
     // Bước 04: Đóng kết nối
     mysqli_close($conn);
+?>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php
+    if (isset($_SESSION['isLoginOK']))
+    {
+        echo '<title>'.$row2['first_name'].' '.$row2['last_name'].'</title>';
+    }
+    ?>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/new.css">
+    <link rel="stylesheet" href="css/id.css">
+</head>
+
+<?php
     require "template/header.php";
 ?>
 
@@ -94,7 +116,7 @@
                             <?php
                             if (isset($_SESSION['isLoginOK']))
                             {
-                                echo '<h3 class="page__name">'.$row['name'].'</h3>';
+                                echo '<h3 class="page__name">'.$row2['first_name'].' '.$row2['last_name'].'</h3>';
                             }
                             ?>
                             <div class="page__status">
@@ -129,8 +151,10 @@
 
                     <div class="page__camera mt-3">
                         <a href="" class="page__camera__button">
-                            <i class="page__camera__icon bi bi-camera-fill"></i>
-                            Add photos
+                        <form action="upload.php" method="post" enctype="multipart/form-data">
+                            <input type="file" name="file" id="fileToUpload">
+                            <input type="submit" value="sbmUpload" name="sbmUpload">
+                        </form>
                         </a>
                     </div>
 
@@ -187,20 +211,31 @@
                                 </a>
                                 <div class="post__header__info">
                                     <?php
-                                        echo '<a href="" class="post__header__name">'.$row['name'].'</a>';
+                                        echo '<a href="" class="post__header__name">'.$row2['first_name'].' '.$row2['last_name'].'</a>';
                                     ?>
-                                    <div class="post__header__timer">
-                                        <a href="">
-                                            50 minutes ago
-                                        </a>
-                                    </div>
                                 </div>
                             </div>
                             <div class="post__text">
                                 <div class="post__text__content">
                                     <div class="post__text--img">
                                         <a href="" class="post__images">
-                                            <img src="assets/images/5bc80b7118fc19ef01f794cd3cd1c292_7588232553038590545.png" alt="">
+                                        <?php
+                                        // Include the database configuration file
+                                        include 'dbConfig.php';
+
+                                        // Get images from the database
+                                        $query = $conn->query("SELECT * FROM images ORDER BY uploaded_on DESC");
+
+                                        if($query->num_rows > 0){
+                                            while($row = $query->fetch_assoc()){
+                                                $imageURL = 'uploads/'.$row["file_name"];
+                                        ?>
+                                            <img src="<?php echo $imageURL; ?>" alt="" />
+                                        <?php }
+                                        }else{ ?>
+                                            <p>No image(s) found...</p>
+                                        <?php } ?>
+                                            <img src="<?php echo $imageURL ?>">
                                         </a>
                                     </div>
                                     <div class="likes__buttn">
